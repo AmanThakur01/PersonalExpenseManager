@@ -1,4 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -63,7 +66,7 @@
                     <div id="reportChart" style="width: 100%; height: 300px;display: inline-block;"></div>
                 </td>
             </tr>
-<!--            <tr>
+            <tr>
                 <td height="350px" valign="top">
                     <h3>Budget Report</h3>
                     <table border="1" cellpadding="3"  width="100%">
@@ -94,7 +97,7 @@
                     </table>
 
                 </td>
-            </tr>-->
+            </tr>
             <tr>
                 <td height="25px">
                     <%-- Footer --%>

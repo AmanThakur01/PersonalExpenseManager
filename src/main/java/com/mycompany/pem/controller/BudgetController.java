@@ -7,7 +7,6 @@ import com.mycompany.pem.service.BudgetService;
 import com.mycompany.pem.service.ExpenseService;
 import com.mycompany.pem.util.TotalAmount;
 import java.sql.Date;
-import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -26,8 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BudgetController {
     @Autowired
     BudgetService budgetService;
-    @Autowired
-    ExpenseService expenseService;
     
     @RequestMapping(value = "/new_budget")
     public String newBudget(Model m) {
@@ -102,17 +99,5 @@ public class BudgetController {
         System.out.println("no if executed");
         return "true";
     }
-    @RequestMapping(value = "/report")
-    public String report(Model m) {
-        Date d = new Date(System.currentTimeMillis());
-        Budget b = budgetService.findBtwDate(d);
-        
-        List<Expense> e = expenseService.findByDate(b.getFrom(), b.getTo());
-        
-        System.out.println("e = "+e.size());
-        System.out.println("b = "+b.getAmount());
-        m.addAttribute("budget", b);
-        m.addAttribute("expenseList",  expenseService.findByDate(b.getFrom(), b.getTo()));
-        return "report";//JSP
-    }
+    
 }

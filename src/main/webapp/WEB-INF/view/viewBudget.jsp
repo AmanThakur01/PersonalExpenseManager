@@ -35,6 +35,9 @@
                     <c:if test="${param.act eq 'del'}">
                         <p class="success">Budget Deleted Successfully</p>
                     </c:if>
+                        <c:if test="${param.act eq 'ag'}">
+                        <p class="success">Try Again!!!</p>
+                    </c:if>
 
 
                     <table width="100%">
@@ -48,7 +51,8 @@
                         </tr>
                     </table>
                     <s:url var="url_bdelete" value="/bulk_bdelete"/>
-                    <form action="${url_bdelete}">           
+                    <form action="${url_bdelete}">     
+                        <input type="hidden" name="bid" value='1'/>
                         <button>Delete Selected Records</button> <br/><br/>
                         <table border="1" cellpadding="3"  width="100%">
                             <tr>
@@ -72,8 +76,9 @@
                             </c:if>
 
                             <c:forEach var="b" items="${budgetList}" varStatus="st">
+                                
                                 <tr>
-                                    <td align="center"><input type="checkbox" name="bid" value="${b.from}"/></td>
+                                    <td align="center"><input type="checkbox" name="bid" value="${b.sr}"/></td>
                                     <td>${b.from}</td>
                                     <td>${b.to}</td>
                                     <td>${b.amount}</td>
@@ -84,10 +89,10 @@
                                     <td>${b.miscellaneous}</td>
                                     <td>${b.bills}</td>
                                     <s:url var="url_del" value="/del_budget">
-                                        <s:param name="bid" value="${b.from}"/>
+                                        <s:param name="bid" value="${b.sr}"/>
                                     </s:url>   
                                     <s:url var="url_report" value="/report_budget">
-                                        <s:param name="bid" value="${b.from}"/>
+                                        <s:param name="bid" value="${b.sr}"/>
                                     </s:url> 
                                     <td><a href="${url_del}">Delete</a> | <a href="${url_report}">Report</a></td>
                                 </tr> 

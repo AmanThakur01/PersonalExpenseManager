@@ -75,27 +75,27 @@
 
                 <tr>
                     <td>Personal Care</td>
-                    <td><f:input path="budget.personalCare" type="number" /> </td>
+                    <td><f:input path="budget.personalCare" type="number" min="0" required="true"/> </td>
                 </tr>
                 <tr>
                     <td>Transportational</td>
-                    <td><f:input path="budget.transportational" type="number"/> </td>
+                    <td><f:input path="budget.transportational" type="number" min="0" required="true"/> </td>
                 </tr>
                 <tr>
                     <td>Rent</td>
-                    <td><f:input path="budget.rent" type="number"/> </td>
+                    <td><f:input path="budget.rent" type="number" min="0" required="true"/> </td>
                 </tr>
                 <tr>
                     <td>Food</td>
-                    <td><f:input path="budget.food" type="number"/> </td>
+                    <td><f:input path="budget.food" type="number" min="0" required="true"/> </td>
                 </tr>
                 <tr>
                     <td>Miscellaneous</td>
-                    <td><f:input path="budget.miscellaneous" type="number"/> </td>
+                    <td><f:input path="budget.miscellaneous" type="number" min="0" required="true"/> </td>
                 </tr>
                 <tr>
                     <td>Bills(Electricity,TV,WiFi,etc)</td>
-                    <td><f:input path="budget.bills" type="number"/> </td>
+                    <td><f:input path="budget.bills" type="number" min="0" required="true"/> </td>
                 </tr>
                 <!--                            <tr>
                                                 <td>Total Amount</td>

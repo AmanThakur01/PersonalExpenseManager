@@ -42,7 +42,7 @@
             <table border="1">
                 <tr>
                     <td>Date</td>
-                    <td><f:input path="date" type="date"/> </td>
+                    <td><f:input path="date" type="date" required="true"/> </td>
                 </tr>
                 <tr>
                     <td>Category</td>
@@ -61,7 +61,7 @@
                 </tr>
                 <tr>
                     <td>Amount</td>
-                    <td><f:input path="amount" type="number"/> </td>
+                    <td><f:input path="amount" type="number" min='1' required="true"/> </td>
                 </tr>
                 <tr>
                     <td>Remark</td>

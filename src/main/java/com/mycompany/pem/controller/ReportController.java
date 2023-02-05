@@ -27,14 +27,19 @@ public class ReportController {
     @RequestMapping(value = "/report")
     public String report(Model m) {
         Date d = new Date(System.currentTimeMillis());
+        try{
         Budget b = budgetService.findBtwDate(d);
 
+//        System.out.println("b amount = "+b.getAmount());
         List<Expense> e = expenseService.findByDate(b.getFrom(), b.getTo());
-
-        System.out.println("e = " + e.size());
-        System.out.println("b = " + b.getAmount());
+//        System.out.println("e list = "+e);
+//        System.out.println("e = " + e.size());
+//        System.out.println("b = " + b.getAmount());
         m.addAttribute("budget", b);
         m.addAttribute("expenseList", expenseService.findByDate(b.getFrom(), b.getTo()));
         return "report";//JSP
+        }catch(Exception e){
+            return "redirect:index?act=nr";
+        }
     }
 }

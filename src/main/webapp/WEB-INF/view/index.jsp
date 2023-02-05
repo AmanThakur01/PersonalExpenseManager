@@ -41,6 +41,12 @@
                     <c:if test="${param.act eq 'del'}">
                         <p class="success">Expense Deleted Successfully</p>
                     </c:if>
+                    <c:if test="${param.act eq 'nr'}">
+                        <p class="success">No Report Found For This Month</p>
+                    </c:if>
+                    <c:if test="${param.act eq 'ag'}">
+                        <p class="success">Try Again!!!</p>
+                    </c:if>
 
 
                     <table width="100%">
@@ -73,6 +79,7 @@
                             </c:if>
 
                             <c:forEach var="e" items="${expenseList}" varStatus="st">
+                                <input type="hidden" name="eid" value="-1"/>
                                 <tr>
                                     <td align="center"><input type="checkbox" name="eid" value="${e.sr}"/></td>
                                     <td>${e.sr}</td>

@@ -29,11 +29,6 @@ public class BudgetServiceImpl extends BaseDAO implements BudgetService{
     }
 
     @Override
-    public void delete(Date b) {
-        budgetDAO.delete(b);
-    }
-
-    @Override
     public Budget findBtwDate(Date date) {
         return budgetDAO.findBtwDate(date);
     }
@@ -52,10 +47,13 @@ public class BudgetServiceImpl extends BaseDAO implements BudgetService{
         return budgetDAO.findAll();
     }
     @Override
-    public void delete(Date[] Ids) {
-        for (Date Id : Ids) {
+    public void delete(Integer[] Ids) {
+        for (Integer Id : Ids) {
             budgetDAO.delete(Id);
         }
+    }
+    public void delete(Integer Id) {
+            budgetDAO.delete(Id);
     }
     
     @Override

@@ -17,6 +17,15 @@ public class Budget {
     private Integer food;
     private Integer miscellaneous;
     private Integer bills;
+    private Integer sr;
+
+    public Integer getSr() {
+        return sr;
+    }
+
+    public void setSr(Integer sr) {
+        this.sr = sr;
+    }
 
     public Date getFrom() {
         return from;

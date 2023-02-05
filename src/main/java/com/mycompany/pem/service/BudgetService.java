@@ -14,7 +14,6 @@ public interface BudgetService {
 
     public void update(Budget b);
 
-    public void delete(Date b);
 
     public Budget findBtwDate(Date date);
 
@@ -22,7 +21,7 @@ public interface BudgetService {
 
     public List<Budget> findAll();
 
-    public void delete(Date[] Ids);
-
+    public void delete(Integer[] Ids);
+public void delete(Integer Id);
     public Budget getLastRow();
 }

@@ -47,7 +47,7 @@ public class BudgetDAOImpl extends BaseDAO implements BudgetDAO {
                 + " rent=:rent,"
                 + " food=:food,"
                 + " miscellaneous=:miscellaneous,"
-                + " bills=:bills,";
+                + " bills=:bills WHERE sr=:sr";
         Map m = new HashMap();
         m.put("from", b.getFrom());
         m.put("to", b.getTo());
@@ -57,14 +57,16 @@ public class BudgetDAOImpl extends BaseDAO implements BudgetDAO {
         m.put("rent", b.getRent());
         m.put("food", b.getFood());
         m.put("miscellaneous", b.getMiscellaneous());
+        m.put("sr", b.getSr());
         m.put("bills", b.getBills());
+        
 
         getNamedParameterJdbcTemplate().update(sql, m);
     }
 
     @Override
-    public void delete(Date b) {
-        String sql = "DELETE FROM budget WHERE `from`= DATE '"+b+"'";
+    public void delete(Integer id) {
+        String sql = "DELETE FROM budget WHERE sr=  '"+id+"'";
         getJdbcTemplate().update(sql);
     }
 

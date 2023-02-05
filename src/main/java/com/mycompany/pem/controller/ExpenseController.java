@@ -70,9 +70,14 @@ public class ExpenseController {
     }
 
     @RequestMapping(value = "/bulk_edelete")
-    public String deleteBulkExpense(@RequestParam("eid") Integer[] sr) {
-        expenseService.delete(sr);
-        return "redirect:index?act=del";
+    public String deleteBulkExpense(@RequestParam Integer[] eid) {
+        try{
+        expenseService.delete(eid);
+            return "redirect:index?act=del";
+        }catch(Exception e){
+            return "redirect:index?act=ag";
+            
+        }
     }
 
     @RequestMapping(value = "/edit_expense")

@@ -47,7 +47,7 @@
     </script>
     <s:url var="url_bg" value="/static/images/bg.jpg"/>
     <body background="${url_bg}">
-        
+
         <table border="1" width="80%" align="center">
             <tr>
                 <td height="80px">
@@ -62,48 +62,60 @@
                 </td>
             </tr>
             <tr>
+                <c:if test="${param.act eq 'nr'}">
+                <p class="success">No Report Found For This Month</p>
+            </c:if>
+            <form action="<s:url value="/budget_date"/>">
                 <td>
-                    <div id="reportChart" style="width: 100%; height: 300px;display: inline-block;"></div>
+                <lable>Choose Budget</lable>&nbsp;&nbsp;&nbsp;
+                    <input type="date" name="bDate" value="${param.bDate}"/>
+                    <button>Submit</button>
                 </td>
-            </tr>
-            <tr>
-                <td height="350px" valign="top">
-                    <h3>Budget Report</h3>
-                    <table border="1" cellpadding="3"  width="100%">
+            </form>
+        </tr>
+        <tr>
+            <td>
+                <div id="reportChart" style="width: 100%; height: 300px;display: inline-block;"></div>
+            </td>
+        </tr> 
+        <tr>
+            <td height="350px" valign="top">
+                <h3>Budget Report</h3>
+                <table border="1" cellpadding="3"  width="100%">
+                    <tr>
+                        <th>ID</th>
+                        <th>DATE</th>
+                        <th>CATEGORY</th>
+                        <th>AMOUNT</th>
+                        <th>REMARK</th>
+                    </tr>
+
+                    <c:if test="${empty expenseList}">
                         <tr>
-                            <th>ID</th>
-                            <th>DATE</th>
-                            <th>CATEGORY</th>
-                            <th>AMOUNT</th>
-                            <th>REMARK</th>
+                            <td align="center" colspan="8" class="error">No Records Present</td>
                         </tr>
+                    </c:if>
 
-                        <c:if test="${empty expenseList}">
-                            <tr>
-                                <td align="center" colspan="8" class="error">No Records Present</td>
-                            </tr>
-                        </c:if>
+                    <c:forEach var="e" items="${expenseList}" varStatus="st">
+                        <tr>
+                            <td>${e.sr}</td>
+                            <td>${e.date}</td>
+                            <td>${e.category}</td>
+                            <td>${e.amount}</td>
+                            <td>${e.remark}</td>
 
-                        <c:forEach var="e" items="${expenseList}" varStatus="st">
-                            <tr>
-                                <td>${e.sr}</td>
-                                <td>${e.date}</td>
-                                <td>${e.category}</td>
-                                <td>${e.amount}</td>
-                                <td>${e.remark}</td>
+                        </tr> 
+                    </c:forEach>
+                </table>
 
-                            </tr> 
-                        </c:forEach>
-                    </table>
-
-                </td>
-            </tr>
-            <tr>
-                <td height="25px">
-                    <%-- Footer --%>
-                    <jsp:include page="include/footer.jsp"/>
-                </td>
-            </tr>
-        </table>
-    </body>
+            </td>
+        </tr>
+        <tr>
+            <td height="25px">
+                <%-- Footer --%>
+                <jsp:include page="include/footer.jsp"/>
+            </td>
+        </tr>
+    </table>
+</body>
 </html>

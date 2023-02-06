@@ -1,4 +1,3 @@
-
 package com.mycompany.pem.controller;
 
 import com.mycompany.pem.domain.Budget;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -26,20 +26,38 @@ public class ReportController {
 
     @RequestMapping(value = "/report")
     public String report(Model m) {
-        Date d = new Date(System.currentTimeMillis());
-        try{
-        Budget b = budgetService.findBtwDate(d);
+        try {
 
-//        System.out.println("b amount = "+b.getAmount());
-        List<Expense> e = expenseService.findByDate(b.getFrom(), b.getTo());
-//        System.out.println("e list = "+e);
-//        System.out.println("e = " + e.size());
-//        System.out.println("b = " + b.getAmount());
-        m.addAttribute("budget", b);
-        m.addAttribute("expenseList", expenseService.findByDate(b.getFrom(), b.getTo()));
-        return "report";//JSP
-        }catch(Exception e){
-            return "redirect:index?act=nr";
+            Date bDate = new Date(System.currentTimeMillis());
+
+            Budget b = budgetService.findBtwDate(bDate);
+
+            List<Expense> e = expenseService.findByDate(b.getFrom(), b.getTo());
+
+            m.addAttribute("budget", b);
+            m.addAttribute("expenseList", expenseService.findByDate(b.getFrom(), b.getTo()));
+            return "report";//JSP
+        } catch (Exception e) {
+            return "redirect:report?act=nr";
+        }
+
+    }
+
+    @RequestMapping(value = "/budget_date")
+    public String reportDate(Model m, @RequestParam("bDate") Date bDate) {
+
+        try {
+
+            Budget b = budgetService.findBtwDate(bDate);
+
+            List<Expense> e = expenseService.findByDate(b.getFrom(), b.getTo());
+
+            m.addAttribute("budget", b);
+            m.addAttribute("expenseList", expenseService.findByDate(b.getFrom(), b.getTo()));
+            return "report";//JSP
+        } catch (Exception e) {
+            return "redirect:report?act=nr";
         }
     }
+
 }

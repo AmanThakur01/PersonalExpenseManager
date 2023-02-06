@@ -61,4 +61,9 @@ public class ExpenseServiceImpl extends BaseDAO implements ExpenseService{
     public List<Expense> findByDate(Date date, Date date1) {
         return expenseDAO.findByDate(date, date1);
     }
+
+    @Override
+    public List<Expense> findByProperty(String string, Object o) {
+        return expenseDAO.findByProperty(string, o);
+    }
 }

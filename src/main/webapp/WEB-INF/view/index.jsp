@@ -9,8 +9,26 @@
         <title>PEM - Personal Expense Manager </title>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  
         <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <s:url var="url_css" value="/static/css/style.css"/>
         <link href="${url_css}" rel="stylesheet" type="text/css"/>
+        <script>
+            $("#fil").change(function() {
+                var selVal = $("#fil").val();
+                console.log(selVal+" = log");
+                $("#"+selVal).attr("selected","selected");
+                if (selVal=="byCategory") {
+                    $("#filterVal").attr("type","text");
+                }
+                if(selVal=="byYear"){
+                    $("#filterVal").attr("type","year");
+                }
+                if(selVal=="byMonth"){
+                    $("#filterVal").attr("type","month");
+                }
+
+            });
+        </script>
     </head>
    
     <s:url var="url_bg" value="/static/images/bg.jpg"/>
@@ -47,10 +65,24 @@
                     <c:if test="${param.act eq 'ag'}">
                         <p class="success">Try Again!!!</p>
                     </c:if>
+                    
 
 
                     <table width="100%">
                         <tr>
+                            <td align="left" >
+                                
+                                <form action="<s:url value="/expense_filter"/>">
+                                    
+                                    <select name="filter" id="fil">  
+                                        <option id="byMonth" value="byMonth" label="By Month"/>  
+                                        <option id="byYear" value="byYear" label="By Year"/>  
+                                        <option id="byCategory" value="byCategory" label="By Category"/>  
+                                    </select>
+                                    <input id="filterVal" type="text" name="val" value="${param.val}" placeholder="Example:2023-01"/>
+                                    <button>Filter</button>
+                                </form>
+                            </td>                           
                             <td align="right" >
                                 <form action="<s:url value="/expense_search"/>">
                                     <input type="text" name="freeText" value="${param.freeText}" placeholder="Enter Text To Search">

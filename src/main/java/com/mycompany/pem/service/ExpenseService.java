@@ -26,6 +26,7 @@ public interface ExpenseService {
     public List<Expense> findAll();
 
     public List<Expense> findExpense(String txt);
+    public List<Expense> findByProperty(String propName, Object propValue);
 
     public List<Expense> findByDate(Date from, Date to);
 

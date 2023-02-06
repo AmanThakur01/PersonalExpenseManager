@@ -85,8 +85,8 @@ public class ExpenseDAOImpl extends BaseDAO implements ExpenseDAO{
 
     @Override
     public List<Expense> findByProperty(String propName, Object propValue) {
-        String sql = "SELECT  sr, date,category, amount,remark FROM expense WHERE " + propName + " = ?";
-        return getJdbcTemplate().query(sql, new ExpenseRowMapper(), propValue);
+        String sql = "SELECT  sr, date,category, amount,remark FROM expense WHERE (`" + propName + "` LIKE '%"+propValue+"%') ";
+        return getJdbcTemplate().query(sql, new ExpenseRowMapper());
     }
 
     @Override

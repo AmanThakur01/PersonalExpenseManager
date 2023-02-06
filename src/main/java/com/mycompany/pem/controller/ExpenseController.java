@@ -2,6 +2,7 @@ package com.mycompany.pem.controller;
 
 import com.mycompany.pem.domain.Expense;
 import com.mycompany.pem.service.ExpenseService;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -64,19 +65,19 @@ public class ExpenseController {
     }
 
     @RequestMapping(value = "/expense_search")
-    public String expenseSearch(Model m, HttpSession session, @RequestParam("freeText") String freeText) {
+    public String expenseSearch(Model m, @RequestParam("freeText") String freeText) {
         m.addAttribute("expenseList", expenseService.findExpense(freeText));
         return "index"; //JSP
     }
 
     @RequestMapping(value = "/bulk_edelete")
     public String deleteBulkExpense(@RequestParam Integer[] eid) {
-        try{
-        expenseService.delete(eid);
+        try {
+            expenseService.delete(eid);
             return "redirect:index?act=del";
-        }catch(Exception e){
+        } catch (Exception e) {
             return "redirect:index?act=ag";
-            
+
         }
     }
 
@@ -88,10 +89,37 @@ public class ExpenseController {
         m.addAttribute("command", e);
         return "expense_form";//JSP form view
     }
+
     @RequestMapping(value = "/del_expense")
     public String deleteExpense(@RequestParam("eid") Integer eId) {
         expenseService.delete(eId);
         return "redirect:index?act=del";
+    }
+
+    @RequestMapping(value = "/expense_filter")
+    public String expenseFilter(@RequestParam("filter") String filter, @RequestParam("val") String val, Model m) {
+        System.out.println("filter = " + filter);
+        System.out.println("val = " + val);
+        if ("byCategory".equals(filter)) {
+            List<Expense> l = expenseService.findByProperty("category", val);
+            System.out.println("l cate = " + l);
+            for (Expense expense : l) {
+                System.out.println("Expense = " + expense.getDate());
+
+            }
+            m.addAttribute("expenseList", l);
+
+        } else {
+            List<Expense> l = expenseService.findByProperty("date", val);
+            m.addAttribute("expenseList", l);
+            System.out.println("l date = " + l);
+            for (Expense expense : l) {
+                System.out.println("Expense = " + expense.getDate());
+
+            }
+            m.addAttribute("expenseList", l);
+        }
+        return "/index";
     }
 
 }

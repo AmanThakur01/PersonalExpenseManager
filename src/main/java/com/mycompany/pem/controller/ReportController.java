@@ -29,16 +29,13 @@ public class ReportController {
         try {
 
             Date bDate = new Date(System.currentTimeMillis());
-
             Budget b = budgetService.findBtwDate(bDate);
-
             List<Expense> e = expenseService.findByDate(b.getFrom(), b.getTo());
-
             m.addAttribute("budget", b);
             m.addAttribute("expenseList", expenseService.findByDate(b.getFrom(), b.getTo()));
             return "report";//JSP
         } catch (Exception e) {
-            return "redirect:report?act=nr";
+            return "redirect:index?act=nb";
         }
 
     }

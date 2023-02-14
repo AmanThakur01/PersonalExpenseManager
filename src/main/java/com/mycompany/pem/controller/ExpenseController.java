@@ -31,15 +31,12 @@ public class ExpenseController {
     @RequestMapping(value = "/expense_form")
     public String expenseForm(Model m) {
         m.addAttribute("command", new Expense());
-        System.out.println("this is new Expense");
         return "expense_form";//jsp
     }
 
     @RequestMapping(value = "/add_expense")
     public String addExpense(@ModelAttribute("command") Expense b, Model m, HttpSession session) {
-        System.out.println("this is new Expense2 url assining Expensecommand");
         Integer eId = (Integer) session.getAttribute("eId");
-//        Expense b = cmd.getExpense();
         if (eId == null) {
             try {
                 expenseService.save(b);
@@ -85,7 +82,6 @@ public class ExpenseController {
     public String prepareEditForm(Model m, HttpSession session, @RequestParam("eid") Integer Id) {
         session.setAttribute("eId", Id);
         Expense e = expenseService.findById(Id);
-        System.out.println("find id  = " + e.getCategory());
         m.addAttribute("command", e);
         return "expense_form";//JSP form view
     }
@@ -102,21 +98,10 @@ public class ExpenseController {
         System.out.println("val = " + val);
         if ("byCategory".equals(filter)) {
             List<Expense> l = expenseService.findByProperty("category", val);
-            System.out.println("l cate = " + l);
-            for (Expense expense : l) {
-                System.out.println("Expense = " + expense.getDate());
-
-            }
             m.addAttribute("expenseList", l);
 
         } else {
             List<Expense> l = expenseService.findByProperty("date", val);
-            m.addAttribute("expenseList", l);
-            System.out.println("l date = " + l);
-            for (Expense expense : l) {
-                System.out.println("Expense = " + expense.getDate());
-
-            }
             m.addAttribute("expenseList", l);
         }
         return "/index";

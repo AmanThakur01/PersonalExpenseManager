@@ -15,7 +15,7 @@ public interface BudgetDAO {
 
      public void delete(Integer id);
 
-//    public List<Budget> findByDate(Date date);
+    public List<Budget> findById(Integer id);
     public List<Budget> findAll();
 
     public Budget findBtwDate(Date date);

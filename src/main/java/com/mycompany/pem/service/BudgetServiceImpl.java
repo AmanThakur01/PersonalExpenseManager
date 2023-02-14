@@ -61,4 +61,9 @@ public class BudgetServiceImpl extends BaseDAO implements BudgetService{
         String sql = "SELECT * FROM budget ORDER BY sr DESC LIMIT 1";
         return getJdbcTemplate().queryForObject(sql, new BudgetRowMapper());
     }
+
+    @Override
+    public List<Budget> findById(Integer intgr) {
+       return budgetDAO.findById(intgr);
+    }
 }

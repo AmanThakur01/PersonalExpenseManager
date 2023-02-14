@@ -52,9 +52,6 @@
                     <c:if test="${err!=null}">
                         <p class="error">${err}</p>
                     </c:if>
-                    <c:if test="${param.act eq 'reg'}">
-                        <p class="success">Budget Registered Successfully.</p>
-                    </c:if>  
                     <s:url var="url_add"  value="/add_budget"/>
                     <f:form action="${url_add}" modelAttribute="command">
                         <!--`from`, `to`, `amount`, `personalCare`, `transportational`, `rent`, `food`, `miscellaneous`, `bills`-->

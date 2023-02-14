@@ -21,9 +21,6 @@ public class ExpenseDAOImpl extends BaseDAO implements ExpenseDAO{
 
     @Override
     public void save(Expense e) {
-        long millis = System.currentTimeMillis();
-        java.sql.Date date = new java.sql.Date(millis);
-//        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String sql = "INSERT INTO expense(`date`, `category`, `amount`,`remark`)"
                 + " VALUES(:date, :category, :amount,:remark)";
         Map m = new HashMap();

@@ -70,11 +70,11 @@ public class BudgetDAOImpl extends BaseDAO implements BudgetDAO {
         getJdbcTemplate().update(sql);
     }
 
-//    @Override
-//    public List<Budget> findByDate(Date date) {
-//        String sql = "SELECT sr, date,category, amount,remark FROM expense WHERE date = ?";
-//        return getJdbcTemplate().query(sql, new BudgetRowMapper(), date);
-//    }
+    @Override
+    public List<Budget> findById(Integer id) {
+        String sql = "SELECT * FROM budge WHERE sr = ?";
+        return getJdbcTemplate().query(sql, new BudgetRowMapper(), id);
+    }
     @Override
     public Budget findBtwDate(Date date) {
         String sql = "SELECT `from`, `to`, `amount`, `personalCare`, `transportational`, `rent`, `food`, `miscellaneous`, `bills` FROM budget WHERE `from` <= DATE '"+date+"' AND `to`>= DATE '"+date+"'";

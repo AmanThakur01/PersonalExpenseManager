@@ -16,10 +16,10 @@ public class TestBtwDateDAO {
     public static void main(String[] args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringRootConfig.class);
         BudgetDAO ds = ctx.getBean(BudgetDAO.class);
-        Date date = Date.valueOf("2023-01-12");
+        Date date = Date.valueOf("2023-02-16");
         Date d = new Date(System.currentTimeMillis());
-        System.out.println("d = "+d);
-//        Budget b = ds.findBtwDate(Date.valueOf(d));
-//        System.out.println("budget = "+b.getAmount());
+        System.out.println("d = "+date);
+        Budget b = ds.findBtwDate((date));
+        System.out.println("budget = "+b.getAmount());
     }
 }

@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Report -PEM</title>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  
         <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
     </head>
@@ -62,17 +62,18 @@
                 </td>
             </tr>
             <tr>
-                <c:if test="${param.act eq 'nr'}">
-                <p class="success">No Report Found For This Month</p>
-            </c:if>
+
             <form action="<s:url value="/budget_date"/>">
                 <td>
                 <lable>Choose Budget</lable>&nbsp;&nbsp;&nbsp;
-                    <input type="date" name="bDate" value="${param.bDate}"/>
-                    <button>Submit</button>
+                <input type="date" name="bDate" value="${param.bDate}"/>
+                <button>Submit</button>
                 </td>
             </form>
         </tr>
+        <tr><td><c:if test="${param.act eq 'nr'}">
+                    <p class="success">No Report Found For the Date</p>
+                </c:if></td></tr>
         <tr>
             <td>
                 <div id="reportChart" style="width: 100%; height: 300px;display: inline-block;"></div>

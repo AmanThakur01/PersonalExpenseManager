@@ -20,7 +20,7 @@ public interface BudgetService {
     public List<Budget> findBudget(String freeText);
 
     public List<Budget> findAll();
-
+public List<Budget> findById(Integer id);
     public void delete(Integer[] Ids);
 public void delete(Integer Id);
     public Budget getLastRow();

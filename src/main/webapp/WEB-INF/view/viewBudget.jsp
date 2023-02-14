@@ -91,8 +91,8 @@
                                     <s:url var="url_del" value="/del_budget">
                                         <s:param name="bid" value="${b.sr}"/>
                                     </s:url>   
-                                    <s:url var="url_report" value="/report_budget">
-                                        <s:param name="bid" value="${b.sr}"/>
+                                    <s:url var="url_report" value="/budget_date">
+                                        <s:param name="bDate" value="${b.from}"/>
                                     </s:url> 
                                     <td><a href="${url_del}">Delete</a> | <a href="${url_report}">Report</a></td>
                                 </tr> 

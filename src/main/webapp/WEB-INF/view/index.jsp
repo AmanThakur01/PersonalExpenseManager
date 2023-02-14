@@ -62,6 +62,9 @@
                     <c:if test="${param.act eq 'nr'}">
                         <p class="success">No Report Found For This Month</p>
                     </c:if>
+                    <c:if test="${param.act eq 'nb'}">
+                        <p class="success">No Budget Found For This Date</p>
+                    </c:if>
                     <c:if test="${param.act eq 'ag'}">
                         <p class="success">Try Again!!!</p>
                     </c:if>

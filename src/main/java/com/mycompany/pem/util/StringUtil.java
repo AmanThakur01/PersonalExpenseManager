@@ -1,5 +1,9 @@
 package com.mycompany.pem.util;
-
+/**
+ * This method concatenate the items in list.
+ * return the single string having comma separated items
+ * @author amanm 
+ */
 public class StringUtil {
     public static String toCommaSeparatedString(Object[] items){
         StringBuilder sb = new StringBuilder();

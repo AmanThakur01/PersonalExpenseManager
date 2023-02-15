@@ -2,7 +2,8 @@ package com.mycompany.pem.util;
 import com.mycompany.pem.domain.Budget;
 
 /**
- * @author amanm
+ * This method return the sum of all category of expenses amount  
+ * @author amanm return total amount of budget
  */
 public class TotalAmount {
     public static Budget addAmount(Budget b){

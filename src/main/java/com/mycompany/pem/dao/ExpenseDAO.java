@@ -4,9 +4,6 @@ import com.mycompany.pem.domain.Expense;
 import java.sql.Date;
 import java.util.List;
 
-/*
- * @author Vikram
- */
 public interface ExpenseDAO {
 
     public void save(Expense u);
@@ -14,8 +11,6 @@ public interface ExpenseDAO {
     public void update(Expense u);
 
     public void delete(Integer e);
-
-    public void deleteByDate(Date from,Date to);
 
     public List<Expense> findByDate(Date from,Date to);
 

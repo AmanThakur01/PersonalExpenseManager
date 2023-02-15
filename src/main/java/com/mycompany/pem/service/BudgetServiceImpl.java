@@ -24,11 +24,6 @@ public class BudgetServiceImpl extends BaseDAO implements BudgetService{
     }
 
     @Override
-    public void update(Budget b) {
-        budgetDAO.update(b);
-    }
-
-    @Override
     public Budget findBtwDate(Date date) {
         return budgetDAO.findBtwDate(date);
     }

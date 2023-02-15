@@ -59,13 +59,6 @@ public class ExpenseDAOImpl extends BaseDAO implements ExpenseDAO{
         getJdbcTemplate().update(sql, e);
     }
 
-    @Override
-    public void deleteByDate(Date from,Date to) {
-        String sql = "DELETE FROM expense where date BETWEEN ? AND ?;";
-        Object[] params = new Object[]{from, to};
-        getJdbcTemplate().update(sql, params);
-
-    }
 
     @Override
     public List<Expense> findByDate(Date from,Date to) {
